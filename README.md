@@ -73,8 +73,6 @@ Video is muted and scaled to fill the screen (aspect-fill).
 ## Wallpaper sources
 Video sources used in the demo:
 
-1. Demo footage credits.
-2. Midnight Fuel Stop. MotionBGS. https://motionbgs.com/midnight-fuel-stop
-3. Tayamayamada: Midnight Thoughts. MotionBGS. https://motionbgs.com/tayamayamada-midnight-thoughts
-4. Frostfang Barioth Armor (MHW Iceborne). MotionBGS. https://motionbgs.com/frostfang-barioth-armor-mhw-iceborne
-5. Morning Serenity. MotionBGS. https://motionbgs.com/morning-serenity
+1. Midnight Fuel Stop. MotionBGS. https://motionbgs.com/midnight-fuel-stop
+3. Frostfang Barioth Armor (MHW Iceborne). MotionBGS. https://motionbgs.com/frostfang-barioth-armor-mhw-iceborne
+4. Morning Serenity. MotionBGS. https://motionbgs.com/morning-serenity
