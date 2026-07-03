@@ -66,6 +66,7 @@ A tray icon appears in the menu bar:
 |---|---|
 | Select Video… | Open a file picker and start looping the chosen video |
 | Pause / Play | Toggle playback |
+| Launch at Login | Toggle starting the app automatically on login (via a LaunchAgent) |
 | Quit | Exit and restore your normal wallpaper |
 
 Video is muted and scaled to fill the screen (aspect-fill).
