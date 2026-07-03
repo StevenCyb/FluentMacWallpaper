@@ -7,7 +7,7 @@ macOS menu bar app that loops a local video (`.mp4`, `.mov`, `.m4v`) as your des
 - Hardware-accelerated playback via AVFoundation (`AVQueuePlayer` + `AVPlayerLooper` for gapless looping) — low CPU and battery usage
 - Menu: **Select Video…**, **Pause/Play**, **Quit**
 
-<img src="demo.gif" width="450px" alt="Demo GIF" />
+<img src="demo.gif" width="600px" alt="Demo GIF" />
 
 <sup><a href="#wallpaper-sources">1</a></sup> Wallpapers Source
 
