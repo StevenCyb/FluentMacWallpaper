@@ -18,9 +18,25 @@ I created this application for personal use, and I am not a macOS developer. It 
 ## Requirements
 
 - macOS (Apple Silicon or Intel)
-- Go 1.22+ and Xcode Command Line Tools (`xcode-select --install`)
 
 ## Install
+
+### Download the DMG (recommended)
+
+Grab `FluentMacWallpaper-arm64.dmg` (Apple Silicon) or `FluentMacWallpaper-intel.dmg` (Intel) from the
+[latest release](https://github.com/StevenCyb/FluentMacWallpaper/releases/latest), open it, and drag
+`FluentMacWallpaper.app` into `Applications`.
+
+> **No Apple Developer account.** The app is only ad-hoc signed (no paid Apple Developer certificate,
+> no notarization), so Gatekeeper blocks the first launch. To open it:
+> - Right-click (or Control-click) `FluentMacWallpaper.app` → **Open** → confirm **Open** in the dialog, or
+> - Run `xattr -d com.apple.quarantine /Applications/FluentMacWallpaper.app` in Terminal.
+>
+> You only need to do this once.
+
+### Build from source
+
+Requires Go 1.22+ and Xcode Command Line Tools (`xcode-select --install`).
 
 ```sh
 git clone https://github.com/StevenCyb/FluentMacWallpaper.git
