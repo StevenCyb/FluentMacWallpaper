@@ -1,0 +1,6 @@
+github.com/ebitengine/purego v0.10.1 h1:dewVBCBT2GaMu1SrNTYxQhgQBethzfhiwvZiLGP/qyY=
+github.com/ebitengine/purego v0.10.1/go.mod h1:iIjxzd6CiRiOG0UyXP+V1+jWqUXVjPKLAI0mRfJZTmQ=
+github.com/go-test/deep v1.1.0 h1:WOcxcdHcvdgThNXjw0t76K42FXTU7HpNQWHpA2HHNlg=
+github.com/go-test/deep v1.1.0/go.mod h1:5C2ZWiW0ErCdrYzpqxLbTX7MG14M9iiw8DgHncVwcsE=
+github.com/gysddn/darwinkit v0.0.0-20250116163834-ed09efd73eea h1:43nw7HoCPieGN1fHwWTfIhOpopKyMD4YtheezfqY8EA=
+github.com/gysddn/darwinkit v0.0.0-20250116163834-ed09efd73eea/go.mod h1:PxQhZuftnALLkCVaR8LaHtUOfoo4pm8qUDG+3C/sXNs=

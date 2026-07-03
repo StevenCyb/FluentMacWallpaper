@@ -1,0 +1,34 @@
+# cSpell:disable
+version: "2"
+
+output:
+  formats:
+    text:
+      path: stdout
+
+linters:
+  default: all
+  disable:
+    - gochecknoglobals
+    - godot
+    - noinlineerr
+    - nlreturn
+    - gomodguard
+    - wsl
+  enable:
+    - gomodguard_v2
+    - wsl_v5
+  settings:
+    depguard:
+      rules:
+        Main:
+          allow:
+            - $gostd
+            - github.com/progrium/darwinkit
+    gomoddirectives:
+      replace-allow-list:
+        - github.com/progrium/darwinkit
+    wsl_v5:
+      allow-first-in-block: true
+      allow-whole-block: false
+      branch-max-lines: 2

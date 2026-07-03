@@ -1,0 +1,78 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - "v*"
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: macos-latest
+    strategy:
+      matrix:
+        include:
+          - goarch: arm64
+            label: arm64
+          - goarch: amd64
+            label: intel
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-go@v5
+        with:
+          go-version-file: go.mod
+
+      - name: Build
+        env:
+          GOOS: darwin
+          GOARCH: ${{ matrix.goarch }}
+          CGO_ENABLED: 1
+        run: go build -o FluentMacWallpaper .
+
+      - name: Bundle app
+        run: |
+          set -euo pipefail
+          VERSION="${GITHUB_REF_NAME#v}"
+          APP=FluentMacWallpaper.app
+          mkdir -p "$APP/Contents/MacOS"
+          cp FluentMacWallpaper "$APP/Contents/MacOS/"
+          sed "s/__VERSION__/$VERSION/g" packaging/Info.plist > "$APP/Contents/Info.plist"
+          # ad-hoc signature only: no Apple Developer cert configured, so Gatekeeper
+          # will still warn on first launch (right-click Open, or `xattr -d
+          # com.apple.quarantine`); this just avoids a "damaged" false positive.
+          codesign --force --sign - "$APP"
+
+      - name: Create dmg
+        run: |
+          set -euo pipefail
+          mkdir dmg-root
+          cp -R FluentMacWallpaper.app dmg-root/
+          ln -s /Applications dmg-root/Applications
+          hdiutil create -volname FluentMacWallpaper -srcfolder dmg-root -ov -format UDZO \
+            "FluentMacWallpaper-${{ matrix.label }}.dmg"
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: dmg-${{ matrix.label }}
+          path: FluentMacWallpaper-${{ matrix.label }}.dmg
+
+  release:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          path: dmgs
+          merge-multiple: true
+
+      - name: Publish release
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+          gh release create "$GITHUB_REF_NAME" dmgs/*.dmg \
+            --repo "$GITHUB_REPOSITORY" --title "$GITHUB_REF_NAME" --generate-notes \
+            || gh release upload "$GITHUB_REF_NAME" dmgs/*.dmg --repo "$GITHUB_REPOSITORY" --clobber
