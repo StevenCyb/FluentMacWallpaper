@@ -212,6 +212,8 @@ func makeWindows() []appkit.Window {
 			screen.Frame(), appkit.WindowStyleMaskBorderless, appkit.BackingStoreBuffered, false,
 			screen)
 		objc.Retain(&w)
+		// contentRect above can get misplaced relative to non-main screens; force it explicitly.
+		w.SetFrameDisplay(screen.Frame(), false)
 		w.SetLevel(desktopWindowLevel)
 		w.SetIgnoresMouseEvents(true)
 		w.SetReleasedWhenClosed(false)
